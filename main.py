@@ -1,5 +1,6 @@
 from datetime import datetime
 import requests
+import json
 
 def cronjob():
     """
@@ -9,4 +10,5 @@ def cronjob():
     print("Cron job is running")
     print("Tick! The time is: %s" % datetime.now())
     response = requests.get("https://mernstackestore.herokuapp.com/items")
-    print(response.status_code)
+    text = json.dumps(response, sort_keys=True, indent=4)
+    print(text)
